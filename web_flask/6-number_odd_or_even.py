@@ -57,7 +57,7 @@ def template_number(n):
 
 @app.route('/number_odd_or_even/<int:n>')
 def odd_even(n):
-    """"""
+    """This method return the render with values have a conditions"""
     if n % 2 == 0:
         types = "even"
     else:
