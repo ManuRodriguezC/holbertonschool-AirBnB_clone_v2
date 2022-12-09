@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-"""
-This module give the dates of the list the states
-"""
+"""This module give the dates of the list the states"""
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-from models.city import City
 
 app = Flask(__name__)
 
-@app.route('cities_by_states')
+@app.route('cities_by_states', strict_slashes=True)
 def cities_by_state():
     """This methos return od the cities and states in db"""
     list_state = storage.all(State)
