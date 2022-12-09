@@ -7,6 +7,7 @@ from models.state import State
 
 app = Flask(__name__)
 
+
 @app.route('cities_by_states', strict_slashes=True)
 def cities_by_state():
     """This methos return od the cities and states in db"""
