@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-starts a Flask web app
+This module give the dates of the list the states
 """
 from flask import Flask, render_template
 from models import storage
@@ -11,19 +11,16 @@ app = Flask(__name__)
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    """display a HTML with the states of the db"""
-    states = storage.all(State)
-    return render_template(
-        '7-states_list.html',
-        states=sorted(
-            states.values(),
-            key=lambda x: x.name))
+    """ This method return all states in the database"""
+    list_states = storage.all(State)
+    return render_template('7-states_list.html', list_states=list_states)
 
 
 @app.teardown_appcontext
-def teardown_db(exception):
+def teardown(exception):
+    """Close current session"""
     storage.close()
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, port=5000, host="0.0.0.0")
